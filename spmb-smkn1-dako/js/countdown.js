@@ -9,7 +9,7 @@
  */
 
 const Countdown = (() => {
-  // Waktu pengumuman: 1 Juli 2025 pukul 08:00 WITA (UTC+8)
+  // Waktu pengumuman: 3 Juli 2026 pukul 015:00 WITA (UTC+8)
   const TARGET_DATE = new Date('2026-07-03T15:00:00+08:00');
 
   // Elemen DOM
