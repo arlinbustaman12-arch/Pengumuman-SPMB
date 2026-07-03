@@ -238,8 +238,7 @@ const Search = (() => {
         <td class="table-td font-semibold text-slate-800 dark:text-slate-100">${escapeHtml(item.nama)}</td>
         <td class="table-td text-slate-600 dark:text-slate-300 hidden md:table-cell">${escapeHtml(item.asalSekolah)}</td>
         <td class="table-td">
-          ${dept ? `<span class="badge-jurusan ${dept.badgeClass}"><i class="fas ${dept.icon} text-[10px]"></i> ${kodeToShort(kode)}</span>` : escapeHtml(item.jurusan)}
-        </td>
+          ${dept ? `<span class="badge-jurusan ${dept.badgeClass}"><i class="fas ${dept.icon} text-[10px]"></i> ${kodeToShort(activeKode)}</span>` : escapeHtml(item.jurusan)}
       `;
 
       tbody.appendChild(tr);
