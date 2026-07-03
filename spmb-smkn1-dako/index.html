@@ -1,0 +1,754 @@
+/* ============================================================
+   SPMB SMKN 1 Dako Pemean - Custom Stylesheet
+   ============================================================ */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --primary: #0F4C81;
+  --primary-light: #1a6bb5;
+  --secondary: #16A34A;
+  --accent: #F59E0B;
+  --radius: 0.75rem;
+}
+
+/* ---------- Base & Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 99px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* ---------- Preloader ---------- */
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Hero Background ---------- */
+.hero-gradient {
+  background: linear-gradient(135deg, #061B33 0%, #0F4C81 40%, #0a3d6b 70%, #061B33 100%);
+}
+
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(22,163,74,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(245,158,11,0.06) 0%, transparent 50%),
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
+}
+
+/* ---------- Hero Orbs (floating blobs) ---------- */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-orb-1 {
+  width: 400px; height: 400px;
+  background: rgba(22,163,74,0.15);
+  top: -100px; left: -100px;
+  animation: floatOrb1 12s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 350px; height: 350px;
+  background: rgba(245,158,11,0.12);
+  bottom: -80px; right: -80px;
+  animation: floatOrb2 15s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 200px; height: 200px;
+  background: rgba(26,107,181,0.2);
+  top: 40%; right: 10%;
+  animation: floatOrb3 10s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, 40px) scale(1.1); }
+  66% { transform: translate(-30px, 80px) scale(0.95); }
+}
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-50px, -30px) scale(1.05); }
+  66% { transform: translate(40px, -60px) scale(0.9); }
+}
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, 30px); }
+}
+
+/* ---------- Countdown Boxes ---------- */
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  min-width: 72px;
+}
+
+.countdown-number {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  color: #ffffff;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.countdown-number.flip {
+  animation: flipNum 0.35s ease;
+}
+
+@keyframes flipNum {
+  0% { transform: scaleY(1); opacity: 1; }
+  40% { transform: scaleY(0); opacity: 0.5; }
+  60% { transform: scaleY(0); opacity: 0.5; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.countdown-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+/* ---------- Status Badge ---------- */
+.status-before {
+  background: rgba(239,68,68,0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+.status-after {
+  background: rgba(34,197,94,0.15);
+  color: #86efac;
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-before .status-dot {
+  background: #ef4444;
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+.status-after .status-dot {
+  background: #22c55e;
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ---------- Glassmorphism Card ---------- */
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 32px rgba(15,76,129,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease;
+}
+.dark .glass-card {
+  background: rgba(30,41,59,0.85);
+  border-color: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.glass-card:hover {
+  box-shadow: 0 12px 40px rgba(15,76,129,0.12), 0 2px 6px rgba(0,0,0,0.06);
+}
+.dark .glass-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* ---------- Search Input ---------- */
+.search-input {
+  width: 100%;
+  padding: 14px 16px 14px 42px;
+  border-radius: var(--radius);
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #1e293b;
+  transition: all 0.25s ease;
+  outline: none;
+}
+.search-input::placeholder {
+  color: #94a3b8;
+}
+.search-input:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(15,76,129,0.1);
+}
+.dark .search-input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+.dark .search-input::placeholder {
+  color: #64748b;
+}
+.dark .search-input:focus {
+  border-color: var(--primary-light);
+  background: #1e293b;
+  box-shadow: 0 0 0 4px rgba(26,107,181,0.15);
+}
+.search-input.input-error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239,68,68,0.1);
+}
+
+/* ---------- Primary Button ---------- */
+.btn-primary {
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15,76,129,0.3);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Quick Filter Button ---------- */
+.btn-quick-filter {
+  padding: 8px 16px;
+  border-radius: 99px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-quick-filter:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15,76,129,0.2);
+}
+.btn-quick-filter.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.dark .btn-quick-filter {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+.dark .btn-quick-filter:hover,
+.dark .btn-quick-filter.active {
+  background: var(--primary-light);
+  color: #fff;
+  border-color: var(--primary-light);
+}
+
+/* ---------- Stat Cards ---------- */
+.stat-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.dark .stat-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+.dark .stat-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.stat-number {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1;
+  display: block;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.dark .stat-number {
+  color: #f1f5f9;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+.dark .stat-label {
+  color: #94a3b8;
+}
+
+/* ---------- Table ---------- */
+.table-th {
+  padding: 14px 16px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+}
+.dark .table-th {
+  color: #94a3b8;
+  border-bottom-color: #334155;
+}
+
+.table-td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.dark .table-td {
+  border-bottom-color: #1e293b;
+}
+
+.table-row {
+  transition: background-color 0.15s ease;
+}
+.table-row:hover {
+  background-color: #f8fafc;
+}
+.dark .table-row:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+
+/* Animasi baris muncul */
+.table-row-enter {
+  animation: rowSlideIn 0.4s ease forwards;
+  opacity: 0;
+}
+@keyframes rowSlideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Jurusan Badge ---------- */
+.badge-jurusan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-atp { background: #dcfce7; color: #15803d; }
+.badge-atu { background: #fef3c7; color: #b45309; }
+.badge-appl { background: #cffafe; color: #0e7490; }
+.dark .badge-atp { background: rgba(34,197,94,0.15); color: #4ade80; }
+.dark .badge-atu { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.dark .badge-appl { background: rgba(6,182,212,0.15); color: #22d3ee; }
+
+/* ---------- Mobile Result Cards ---------- */
+.result-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+  animation: cardFadeIn 0.4s ease forwards;
+  opacity: 0;
+}
+.result-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.dark .result-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+.dark .result-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Action Buttons ---------- */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-action:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+.dark .btn-action {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+.dark .btn-action:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+.btn-action-wa {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+.btn-action-wa:hover {
+  background: #bbf7d0;
+}
+.dark .btn-action-wa {
+  background: rgba(34,197,94,0.15);
+  border-color: rgba(34,197,94,0.3);
+  color: #4ade80;
+}
+.dark .btn-action-wa:hover {
+  background: rgba(34,197,94,0.25);
+}
+
+/* ---------- Skeleton Loading ---------- */
+.skeleton-row {
+  height: 60px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 8px;
+}
+.dark .skeleton-row {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------- Empty State Animation ---------- */
+.empty-anim {
+  animation: emptyBounce 2s ease-in-out infinite;
+}
+@keyframes emptyBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ---------- Department Cards ---------- */
+.dept-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.dept-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+}
+.dept-card-green::before { background: linear-gradient(90deg, #16A34A, #4ade80); }
+.dept-card-amber::before { background: linear-gradient(90deg, #F59E0B, #fbbf24); }
+.dept-card-cyan::before { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+
+.dept-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+.dark .dept-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+.dark .dept-card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.dept-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.dept-code {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.dept-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.dark .dept-name {
+  color: #f1f5f9;
+}
+
+.dept-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.dark .dept-desc {
+  color: #94a3b8;
+}
+
+.dept-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dept-code-badge {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* ---------- Navbar Scrolled State ---------- */
+.navbar-scrolled {
+  background: rgba(255,255,255,0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06) !important;
+}
+.dark .navbar-scrolled {
+  background: rgba(15,23,42,0.92) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3) !important;
+}
+.navbar-scrolled #nav-title {
+  color: #0f172a !important;
+}
+.dark .navbar-scrolled #nav-title {
+  color: #f1f5f9 !important;
+}
+
+/* ---------- Scroll to Top Button Visible ---------- */
+#btn-scroll-top.visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  #preloader, #navbar, #hero, #search-section,
+  #stats-section, #departments-section, footer,
+  #result-actions, #skeleton-loader, #empty-state,
+  #btn-scroll-top, #btn-dark-mode,
+  #print-container, .no-print {
+    display: none !important;
+  }
+
+  #results-section {
+    display: block !important;
+    padding-top: 0 !important;
+  }
+
+  /* Header Cetak */
+  #results-section::before {
+    content: 'SMKN 1 DAKO PEMEAN';
+    display: block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 16pt;
+    margin-bottom: 4px;
+    color: #000;
+  }
+
+  #table-wrapper {
+    display: block !important;
+    box-shadow: none !important;
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+  }
+
+  #cards-wrapper {
+    display: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .table-th {
+    background: #e2e8f0 !important;
+    color: #000 !important;
+    border-bottom: 2px solid #000 !important;
+    padding: 10px 12px !important;
+    font-size: 10pt !important;
+  }
+
+  .table-td {
+    border-bottom: 1px solid #ccc !important;
+    padding: 10px 12px !important;
+    color: #000 !important;
+    font-size: 10pt !important;
+  }
+
+  .table-row:hover {
+    background: transparent !important;
+  }
+
+  .badge-jurusan {
+    border: 1px solid #999 !important;
+    background: #f5f5f5 !important;
+    color: #000 !important;
+  }
+
+  .table-row-enter {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  #results-title, #results-subtitle {
+    display: block !important;
+    text-align: center;
+    color: #000 !important;
+    margin-bottom: 16px;
+  }
+  #results-title {
+    font-size: 12pt;
+    font-weight: 700;
+  }
+  #results-subtitle {
+    font-size: 10pt;
+    margin-bottom: 20px;
+  }
+
+  @page {
+    margin: 15mm;
+    size: A4 portrait;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-orb { display: none; }
+}
