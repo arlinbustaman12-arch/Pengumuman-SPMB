@@ -752,3 +752,159 @@ body {
   }
   .hero-orb { display: none; }
 }
+/* ============================================================
+   Extreme Responsive - Layar Sangat Kecil (320px - 360px)
+   ============================================================ */
+
+/* --- Countdown Timer --- */
+@media (max-width: 380px) {
+  .countdown-box {
+    min-width: 58px;
+    padding: 10px 8px;
+    border-radius: 10px;
+  }
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+  .countdown-label {
+    font-size: 0.55rem;
+  }
+  /* Kurangi jarak antar kotak */
+  #countdown-wrapper .flex {
+    gap: 6px !important;
+  }
+  /* Sembunyikan titik dua, pakai layout 2x2 grid */
+  #countdown-wrapper .flex {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 8px !important;
+  }
+  #countdown-wrapper .flex span:not(.countdown-box):not(.countdown-number):not(.countdown-label) {
+    display: none !important;
+  }
+}
+
+/* --- Hero Section --- */
+@media (max-width: 360px) {
+  #hero h1 {
+    font-size: 1.65rem !important;
+    line-height: 1.2 !important;
+  }
+  #hero .text-base {
+    font-size: 0.8rem !important;
+  }
+  #hero .text-sm {
+    font-size: 0.7rem !important;
+  }
+  /* Logo lebih kecil */
+  #hero .w-28 {
+    width: 6rem !important;
+    height: 6rem !important;
+  }
+}
+
+/* --- Status Badge --- */
+@media (max-width: 400px) {
+  #status-text {
+    font-size: 0.7rem !important;
+    padding: 8px 14px !important;
+    letter-spacing: 0.03em !important;
+  }
+}
+
+/* --- Quick Filter Buttons --- */
+@media (max-width: 400px) {
+  .btn-quick-filter {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+}
+
+/* --- Search Input --- */
+@media (max-width: 400px) {
+  .search-input {
+    padding: 12px 12px 12px 38px;
+    font-size: 0.85rem;
+  }
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 0.82rem;
+  }
+}
+
+/* --- Stat Cards --- */
+@media (max-width: 360px) {
+  .stat-card {
+    padding: 14px 10px;
+  }
+  .stat-number {
+    font-size: 1.4rem;
+  }
+  .stat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* --- Result Cards Mobile --- */
+@media (max-width: 360px) {
+  .result-card {
+    padding: 12px;
+  }
+  .result-card h4 {
+    font-size: 0.9rem;
+  }
+  .result-card p {
+    font-size: 0.78rem;
+  }
+}
+
+/* --- Department Cards --- */
+@media (max-width: 380px) {
+  .dept-card {
+    padding: 20px 16px;
+  }
+  .dept-name {
+    font-size: 0.92rem;
+  }
+  .dept-desc {
+    font-size: 0.78rem;
+  }
+  .dept-icon {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* --- Action Buttons --- */
+@media (max-width: 400px) {
+  .btn-action {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+}
+
+/* --- Footer --- */
+@media (max-width: 400px) {
+  footer .flex-col {
+    gap: 1.5rem !important;
+  }
+}
+
+/* --- Navbar --- */
+@media (max-width: 400px) {
+  #navbar .px-4 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* --- Glass Card Search --- */
+@media (max-width: 400px) {
+  .glass-card {
+    padding: 20px 16px !important;
+  }
+}
