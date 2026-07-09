@@ -741,7 +741,7 @@ body {
     margin: 15mm;
     size: A4 portrait;
   }
-}
+
 
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
